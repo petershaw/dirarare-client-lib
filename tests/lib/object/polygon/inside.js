@@ -39,12 +39,10 @@ describe('A Point', function(){
 			0  1  2  3  4  5  6  7  8  9
 		*/
 		it('should be true when it is inside', function(done){
-			console.log(s.data);
 			s.isPointInside([4,6]).should.be.true;
 			done();
 		});
 		it('should be false when it is outside', function(done){
-			console.log(s.data);
 			s.isPointInside([5,4]).should.be.false;
 			done();
 		});
