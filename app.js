@@ -3,28 +3,27 @@ var clc = require('cli-color')
 	, async = require('async')
 	, _ = require('underscore')
 	, artnetclient = require('artnet-node').Client
-	, matrix = require('./lib/matrix')
-	, movement = require('./lib/movement')
+	, Matrix = require('./lib/matrix')
+	, Movement = require('./lib/movement')
+	, Polygon = require('./lib/objects/polygon')
 	;
 	
 	
-var matrix 		= new matrix(8, 8);	
-var movement 	= new movement(matrix);
-	
-var global = this;
+var matrix 		= new Matrix(8, 8);	
+var movement 	= new Movement(matrix);
+var polygon		= new Polygon([0,0], [3,0], [1,6]);
 
-setInterval(function(){
+// set movement options like bound on, paintover, etc.. 
 
-	global.pan = [];
-	global.pan[0] = 50;
-	global.pan[8] = 255;
-	global.pan[16] = 50;
+// movement.down(polygon, function(){
+// });
 
-	movement.down(global.pan, function(err, result){
-		global.pan = result;
-		out = _.extend(blackout, global.pan);
-		console.log(out);
-	});
-	process.exit(0);
-	
-}, 1000);
+// movement.up(polygon, function(){
+// });
+
+// movement.to(polygon, [x,y], time_in_seconds, function(){
+// });
+
+
+
+
