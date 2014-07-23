@@ -29,7 +29,7 @@ node consoleDebug.js line 1,0 5,0
 
 Still unsupported 
 ----------------------
-- Movement
+- --Movement--
 - Resizing
 - Dimming (Light effekts)
 
