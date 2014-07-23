@@ -27,9 +27,14 @@ or
 node consoleDebug.js line 1,0 5,0
 ```
 
+Supported 
+----------------------
+- Polygons
+- Lines
+- Movement
+
 Still unsupported 
 ----------------------
-- --Movement--
 - Resizing
 - Dimming (Light effekts)
 
