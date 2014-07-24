@@ -8,22 +8,26 @@ var clc = require('cli-color')
 	, Polygon = require('./lib/objects/polygon')
 	;
 	
+
+DO NOT USE -- NOT EVEN BEGUN TO IMPLEMENT
+use the tests!
 	
 var matrix 		= new Matrix(8, 8);	
 var movement 	= new Movement(matrix);
-var polygon		= new Polygon([0,0], [3,0], [1,6]);
+var polygon1	= new Polygon([0,0], [3,0], [3,6], [0,6]);
+var polygon2	= new Polygon([3,1], [6,5], [6,6], [3,6]);
 
-// set movement options like bound on, paintover, etc.. 
+matrix.updateFrequency(250);
 
-// movement.down(polygon, function(){
-// });
-
-// movement.up(polygon, function(){
-// });
-
-// movement.to(polygon, [x,y], time_in_seconds, function(){
-// });
+movement.setMove([+1, 0], function(o){o[0] *= -1}, 300);
+polygon1.addMovement(movement);
 
 
+matrix.addElement(polygon1);
 
+setInterval(function(){
+	matrix.renderAll(function(data){
+		console.log("== ", data);
+	});
+}, 100);
 
