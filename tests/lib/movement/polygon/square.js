@@ -2,9 +2,9 @@
 var   assert 	= require('assert')
 	, should 	= require('should')
 	, _			= require('underscore')
-	, matrix 	= require('../../../lib/matrix')
-	, movement 	= require('../../../lib/movement')
-	, polygon 	= require('../../../lib/objects/polygon')
+	, matrix 	= require('../../../../lib/matrix')
+	, movement 	= require('../../../../lib/movement')
+	, polygon 	= require('../../../../lib/objects/polygon')
 	;
 
 	
