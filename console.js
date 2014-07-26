@@ -52,6 +52,11 @@ var argv = require('optimist')
     .alias('l', 'list')
     .describe('l', 'show list of available objects')
     .alias('l', 'list')
+    .describe('dL', 'draw lines between the points, if available')
+    .alias('dL', 'drawlines')
+    .describe('dF', 'fills the object, if available')
+    .alias('dF', 'drawfill')
+
     .argv;
 	
 // initialise the matrix and load the requested object
@@ -125,11 +130,11 @@ _.each(argv._, function(p){
 });
 
 var objElement = Obj.apply(this, points);
-if( typeof objElement.enableLines == 'function' ){ 
+if(argv.drawlines && typeof objElement.enableLines == 'function' ){ 
 	objElement.enableLines();
 }
-if( typeof objElement.enableFill == 'function' ){ 
-//	objElement.enableFill();
+if(argv.drawfill && typeof objElement.enableFill == 'function' ){ 
+	objElement.enableFill();
 }
 matrix.setTarget(
 	function(data){
