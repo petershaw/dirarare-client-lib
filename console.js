@@ -81,12 +81,14 @@ try {
 // function to print the resulttable
 var printtable = function(obj, data){
 	console.log(clc.blue(
-		"Draw points from object "
-		+ argv.object 
-		+": "
+		"Draw points from object ") + 
+		clc.blue.bold(
+		argv.object 
+		) +
+		clc.blue(
+		": "
 		+ argv._.join('|')
 	));
-	console.log(clc.green(data.join("|")));
 	var table = [];
 	for(y=0;y < matrix.dimension.y; y++){
 		var row = [];
@@ -117,6 +119,7 @@ var printtable = function(obj, data){
 		table.push(row);
 	}
 	console.table(table);
+	console.log(clc.green(data.join(" | ")));
 }
 
 // construction the element
