@@ -83,15 +83,17 @@ var printtable = function(obj, data){
 	));
 	console.log(clc.green(data.join("|")));
 	var table = [];
-	for(y=0;y < 8; y++){
+	for(y=0;y < matrix.dimension.y; y++){
 		var row = [];
-		for(x=0;x < 8;x++){
+		for(x=0;x < matrix.dimension.x;x++){
 			var test = _.find(data, function(e){ 
 				if(e[0]==x && e[1]==y) return 1;
 			});
 			if( test ){
-				if(test[0] == points[0][0] && test[1] == points[0][1] || 
-					test[0] == points[1][0] && test[1] == points[1][1] ){
+				var isPx = _.map(points, function(p){
+					return test[0] == p[0] && test[1] == p[1];
+				});
+				if(_.some(isPx)){
 					row.push("X");
 				}
 				else if(test[0] == obj.midPoint[0] && test[1] == obj.midPoint[1] ){
@@ -123,6 +125,12 @@ _.each(argv._, function(p){
 });
 
 var objElement = Obj.apply(this, points);
+if( typeof objElement.enableLines == 'function' ){ 
+	objElement.enableLines();
+}
+if( typeof objElement.enableFill == 'function' ){ 
+//	objElement.enableFill();
+}
 matrix.setTarget(
 	function(data){
 		printtable(objElement, data);

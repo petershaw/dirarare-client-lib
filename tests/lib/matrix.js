@@ -45,4 +45,16 @@ describe('Matrix', function(){
     });
   });
   
+  describe('dimensions', function(){
+    it('should return the right dimension after initialisation', function(done){
+    	var m = new matrix(10, 4);
+		assert.equal('object', typeof m.dimension);
+		assert.equal(10, m.dimension.x);
+		assert.equal(4, m.dimension.y);
+		
+		done();
+    });
+  });
+  
+  
 })
