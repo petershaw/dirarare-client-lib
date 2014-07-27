@@ -5,28 +5,39 @@ var clc = require('cli-color')
 	, artnetclient = require('artnet-node').Client
 	, Matrix = require('./lib/matrix')
 	, Movement = require('./lib/movement')
+	, Animation = require('./lib/animation')
 	, Polygon = require('./lib/objects/polygon')
 	;
 	
-
-DO NOT USE -- NOT EVEN BEGUN TO IMPLEMENT
-use the tests!
 	
 var matrix 		= new Matrix(8, 8);	
 var movement 	= new Movement(matrix);
 var polygon1	= new Polygon([0,0], [3,0], [3,6], [0,6]);
 var polygon2	= new Polygon([3,1], [6,5], [6,6], [3,6]);
 
-matrix.updateFrequency(250);
+matrix.setTarget( console.log );
+matrix.addElement('p1', polygon1);
+matrix.addElement(polygon2);
 
-movement.setMove([+1, 0], function(o){o[0] *= -1}, 300);
-polygon1.addMovement(movement);
+var animation 	= new Animation(matrix);
+animation.updateFrequency(500);
+animation.updateFunction(function(){
+	matrix.draw(function(data){
+		console.log("== ", data);
+	});
+});
+
+var moveright = [0,1]
+animation.add(3000, 'p1'
+	, function(element, matrix, elements){
+ 		movement.moveBy( element.moveright );
+ 	}
+ });
 
 
-matrix.addElement(polygon1);
 
 setInterval(function(){
-	matrix.renderAll(function(data){
+	matrix.draw(function(data){
 		console.log("== ", data);
 	});
 }, 100);
