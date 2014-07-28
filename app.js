@@ -28,17 +28,17 @@ animation.updateFunction(function(){
 });
 
 var moveright = [0,1]
-animation.add(3000, 'p1'
+var a1 = animation.add(3000, 'p1'
 	, function(element, matrix, elements){
  		movement.moveBy( element.moveright );
  	}
- });
+);
 
+animation.start();
 
-
-setInterval(function(){
-	matrix.draw(function(data){
-		console.log("== ", data);
-	});
-}, 100);
+// setInterval(function(){
+// 	matrix.draw(function(data){
+// 		console.log("== ", data);
+// 	});
+// }, 100);
 
