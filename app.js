@@ -5,29 +5,70 @@ var clc = require('cli-color')
 	, artnetclient = require('artnet-node').Client
 	, Matrix = require('./lib/matrix')
 	, Movement = require('./lib/movement')
+	, Animation = require('./lib/animation')
 	, Polygon = require('./lib/objects/polygon')
 	;
 	
-
-DO NOT USE -- NOT EVEN BEGUN TO IMPLEMENT
-use the tests!
 	
-var matrix 		= new Matrix(8, 8);	
+var matrix 		= new Matrix(16, 16);	
 var movement 	= new Movement(matrix);
-var polygon1	= new Polygon([0,0], [3,0], [3,6], [0,6]);
-var polygon2	= new Polygon([3,1], [6,5], [6,6], [3,6]);
+var polygon1	= new Polygon([0,0], [3,0], [3,3], [0,3]);
+var polygon2	= new Polygon([4,4], [5,4], [5,5], [4,5]);
 
-matrix.updateFrequency(250);
+var ConsolePrinter = require('./lib/printer/console')(matrix);
 
-movement.setMove([+1, 0], function(o){o[0] *= -1}, 300);
-polygon1.addMovement(movement);
+matrix.setTarget( ConsolePrinter );
+matrix.addElement('p1', polygon1);
+// matrix.addElement('p2', polygon2);
 
-
-matrix.addElement(polygon1);
-
-setInterval(function(){
-	matrix.renderAll(function(data){
-		console.log("== ", data);
+var animation 	= new Animation(matrix);
+animation.updateFrequency(50);
+animation.updateFunction(function(){
+	matrix.draw(function(data){
+		//console.log("== ", data);
 	});
-}, 100);
+});
+
+var moveright = [1,0];
+var movedown = [0,1];
+var a1 = animation.add(150, 'p1'
+	, function(element, matrix){
+ 		movement.moveBy( element, moveright );
+
+ 		if((element.midPoint[0] >= matrix.dimension.x)){
+ 			moveright[0] = -1;
+ 		}
+ 		if((element.midPoint[0] <= 0)){
+ 			moveright[0] = 1;
+ 		}
+ 	}
+	, function(element, matrix){
+ 		movement.moveBy( element, movedown );
+ 		
+ 		if(element.midPoint[1] >= matrix.dimension.y){
+ 			movedown[1] = -1;
+ 		}
+ 		if(element.midPoint[1] <= 0){
+ 			movedown[1] = 1;
+ 		}
+ 	}
+);
+
+var resizer = -5;
+var a2 = animation.add(800, 'p1'
+	, function(element, matrix){
+		resizer = resizer +1;
+		if(resizer > 5){ resizer = -4; }
+		if(resizer < 0){
+			element.resize(1);
+		} else if (resizer > 1){
+			element.resize(-1);
+		} 
+	}
+);
+
+polygon1.enableLines();
+polygon1.enableFill();
+
+animation.start();
 
