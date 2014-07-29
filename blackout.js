@@ -15,4 +15,6 @@ matrix.setTarget( ArtNetPrinter );
 matrix.blackout();
 
 
-
+setTimeout(function(){
+	process.exit(0);
+}, 100);

@@ -42,7 +42,7 @@ setInterval(function(){
 		line1.disableLines();
 		line2.disableLines();
 	}
-	if(linedraw==2){ linedraw = 0 ;}
+	if(linedraw>=3){ linedraw = 0 ;}
 }, 10000);
 
 var moveright = [-1,0];
