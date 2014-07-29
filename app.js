@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 
 var clc = require('cli-color')
 	, async = require('async')
