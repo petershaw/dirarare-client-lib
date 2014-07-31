@@ -5,6 +5,7 @@ var   assert 	= require('assert')
 	, matrix 	= require('../../../lib/matrix')
 	, movement 	= require('../../../lib/movement')
 	, line 		= require('../../../lib/objects/line')
+	, helper 	= require('../../../lib/helper/point')
 	;
 
 	
@@ -48,6 +49,9 @@ describe('A line', function(){
 					// Check length of 4
 					data.should.have.length(4);
 					
+					// get only coordinates
+					data = helper.getCoordinates(data);
+					
 					// points
 					data.should.containEql([3,2]);
 					data.should.containEql([4,3]);
@@ -78,6 +82,9 @@ describe('A line', function(){
 				s.render(function(data){
 					// Check length of 4
 					data.should.have.length(4);
+					
+					// get only coordinates
+					data = helper.getCoordinates(data);
 					
 					// points
 					data.should.containEql([3,5]);

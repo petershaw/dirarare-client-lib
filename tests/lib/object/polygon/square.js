@@ -3,6 +3,7 @@ var   assert = require('assert')
 	, should = require('should')
 	, _		 = require('underscore')
 	, polygon = require('../../../../lib/objects/polygon')
+	, helper 	= require('../../../../lib/helper/point')
 	;
 
 /*
@@ -52,6 +53,9 @@ describe('Simple Square-Polygon', function(){
 
 			it('should return 0,0; 5,0; 5,4 and 0,4', function(done){
 				s.render(function(data){
+					// get only coordinates
+					data = helper.getCoordinates(data);
+					
 					data.should.containEql([0,0]);
 					data.should.containEql([5,0]);
 					data.should.containEql([5,4]);
@@ -91,6 +95,10 @@ describe('Simple Square-Polygon', function(){
 
 			it('should return a list of combines points', function(done){
 				s.render(function(data){		
+				
+					// get only coordinates
+					data = helper.getCoordinates(data);
+					
 					// Points
 					data.should.containEql([0,0]);
 					data.should.containEql([5,0]);
@@ -155,7 +163,12 @@ describe('Simple Square-Polygon', function(){
 
 			it('should return a full filled element', function(done){
 
-				s.render(function(data){		
+				s.render(function(data){	
+				
+					// get only coordinates
+					data = helper.getCoordinates(data);
+					
+						
 					// Points
 					data.should.containEql([0,0]);
 					data.should.containEql([5,0]);
@@ -235,6 +248,10 @@ describe('Simple Square-Polygon', function(){
 
 			it('should return 0,0; 5,0; 5,4 and 0,4', function(done){
 				s.render(function(data){
+				
+					// get only coordinates
+					data = helper.getCoordinates(data);
+					
 					data.should.containEql([2,2]);
 					data.should.containEql([7,2]);
 					data.should.containEql([7,6]);
@@ -276,6 +293,10 @@ describe('Simple Square-Polygon', function(){
 			it('should return a list of combines points', function(done){
 
 				s.render(function(data){		
+				
+					// get only coordinates
+					data = helper.getCoordinates(data);
+					
 					// Points
 					data.should.containEql([2,2]);
 					data.should.containEql([7,2]);
@@ -339,7 +360,11 @@ describe('Simple Square-Polygon', function(){
 
 			it('should return a full filled element', function(done){
 
-				s.render(function(data){		
+				s.render(function(data){	
+				
+					// get only coordinates
+					data = helper.getCoordinates(data);
+						
 					// points
 					data.should.containEql([2,2]);
 					data.should.containEql([7,2]);

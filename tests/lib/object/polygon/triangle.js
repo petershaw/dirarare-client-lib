@@ -3,6 +3,7 @@ var   assert = require('assert')
 	, should = require('should')
 	, _		 = require('underscore')
 	, polygon = require('../../../../lib/objects/polygon')
+	, helper 	= require('../../../../lib/helper/point')
 	;
 
 /*
@@ -52,6 +53,9 @@ describe('Simple Triangle-Polygon', function(){
 
 			it('should return 0,0; 4,0; and 2,4', function(done){
 				s.render(function(data){
+					// get only coordinates
+					data = helper.getCoordinates(data);
+				
 					data.should.containEql([0,0]);
 					data.should.containEql([4,0]);
 					data.should.containEql([2,4]);
@@ -89,7 +93,11 @@ describe('Simple Triangle-Polygon', function(){
 			});
 
 			it('should return a list of combines points', function(done){
-				s.render(function(data){		
+				s.render(function(data){	
+				
+					// get only coordinates
+					data = helper.getCoordinates(data);
+						
 					// Points
 					data.should.containEql([0,0]);
 					data.should.containEql([4,0]);
@@ -142,6 +150,10 @@ describe('Simple Triangle-Polygon', function(){
 			it('should return a full filled element', function(done){
 
 				s.render(function(data){		
+				
+					// get only coordinates
+					data = helper.getCoordinates(data);
+
 					// Points
 					data.should.containEql([0,0]);
 					data.should.containEql([4,0]);

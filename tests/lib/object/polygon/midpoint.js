@@ -40,6 +40,7 @@ describe('A polygon midpoint', function(){
 				0  1  2  3  4  5  6  7  8  9
 			*/
 			it('should return 3/3', function(done){
+					
 				[s.midPoint].should.containEql([3,3]);
 				done();
 			});
@@ -61,7 +62,9 @@ describe('A polygon midpoint', function(){
 			0   _  _  _  _  _  _  _  _  _  _
 				0  1  2  3  4  5  6  7  8  9
 			*/
-			it('should return 3/3', function(done){			
+			it('should return 3/3', function(done){	
+				// get only coordinates
+
 				[s.midPoint].should.containEql([3,3]);
 				done();
 			});

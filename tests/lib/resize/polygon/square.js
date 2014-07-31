@@ -5,6 +5,7 @@ var   assert 	= require('assert')
 	, matrix 	= require('../../../../lib/matrix')
 	, movement 	= require('../../../../lib/movement')
 	, polygon 	= require('../../../../lib/objects/polygon')
+	, helper 	= require('../../../../lib/helper/point')
 	;
 
 	
@@ -45,6 +46,9 @@ describe('A polygon', function(){
 		it('grow', function(done){
 			s.resize(1);
 			s.render(function(data){
+				// get only coordinates
+				data = helper.getCoordinates(data);
+				
 				// Check length of 4
 				data.should.have.length(4);
 					
@@ -75,6 +79,9 @@ describe('A polygon', function(){
 		it('shring', function(done){
 			s.resize(-2);
 			s.render(function(data){
+				// get only coordinates
+				data = helper.getCoordinates(data);
+
 				// Check length of 4
 				data.should.have.length(4);
 					

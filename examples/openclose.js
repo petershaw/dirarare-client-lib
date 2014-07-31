@@ -12,9 +12,9 @@ var clc = require('cli-color')
 	;
 	
 	
-var matrix 		= new Matrix(8, 8);	
+var matrix 		= new Matrix(16, 8);	
 var movement 	= new Movement(matrix);
-var polygon1	= new Polygon([0,0], [7,0], [7,7], [0,7]);
+var polygon1	= new Polygon([0,0, 50], [7,0, 50], [7,7, 50], [0,7, 50]);
 
 
 var ConsolePrinter = require('../lib/printer/console')(matrix);

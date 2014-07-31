@@ -3,6 +3,7 @@ var   assert = require('assert')
 	, should = require('should')
 	, _		 = require('underscore')
 	, line = require('../../../../lib/objects/line')
+	, helper 	= require('../../../../lib/helper/point')
 	;
 
 /*
@@ -78,6 +79,9 @@ describe('A Line', function(){
 				// count elements
 				data.should.have.length(7);
 				
+				// count elements
+				data.should.have.length(7);
+				
 				// points
 				data.should.containEql([5,2]);
 				data.should.containEql([5,7]);
@@ -110,6 +114,9 @@ describe('A Line', function(){
 		it('on diagonale up-axis should be fine', function(done){
 			var s_up =  new line([1,1],[7,7]);
 			s_up.render(function(data){
+				// count elements
+				data.should.have.length(7);
+				
 				// count elements
 				data.should.have.length(7);
 				
@@ -150,6 +157,9 @@ describe('A Line', function(){
 				// count elements
 				data.should.have.length(7);
 				
+				// count elements
+				data.should.have.length(7);
+				
 				// points
 				data.should.containEql([1,7]);
 				data.should.containEql([7,1]);
@@ -184,6 +194,12 @@ describe('A Line', function(){
 		it('on diagonale down-axis should be fine', function(done){
 			var s_flatdown =  new line([1,5],[7,1]);
 			s_flatdown.render(function(data){
+				// count elements
+				data.should.have.length(7);
+				
+				// get only coordinates
+				data = helper.getCoordinates(data);
+					
 				// count elements
  				data.should.have.length(7);
  				

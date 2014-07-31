@@ -5,6 +5,7 @@ var   assert 	= require('assert')
 	, matrix 	= require('../../../../lib/matrix')
 	, movement 	= require('../../../../lib/movement')
 	, polygon 	= require('../../../../lib/objects/polygon')
+	, helper 	= require('../../../../lib/helper/point')
 	;
 
 	
@@ -48,6 +49,9 @@ describe('A polygon', function(){
 					// Check length of 4
 					data.should.have.length(4);
 					
+					// get only coordinates
+					data = helper.getCoordinates(data);
+					
 					// points
 					data.should.containEql([3,2]);
 					data.should.containEql([6,2]);
@@ -79,6 +83,9 @@ describe('A polygon', function(){
 					// Check length of 4
 					data.should.have.length(4);
 					
+					// get only coordinates
+					data = helper.getCoordinates(data);
+					
 					// points
 					data.should.containEql([3,3]);
 					data.should.containEql([6,3]);
@@ -109,6 +116,9 @@ describe('A polygon', function(){
 				s.render(function(data){
 					// Check length of 4
 					data.should.have.length(4);
+					
+					// get only coordinates
+					data = helper.getCoordinates(data);
 					
 					// points
 					data.should.containEql([1,2]);
@@ -145,6 +155,9 @@ describe('A polygon', function(){
 				s.render(function(data){
 					// Check length of 12
 					data.should.have.length(12);
+					
+					// get only coordinates
+					data = helper.getCoordinates(data);
 					
 					// points
 					data.should.containEql([6,4]);
@@ -193,6 +206,9 @@ describe('A polygon', function(){
 				s.render(function(data){
 					// Check length of 16
 					data.should.have.length(16);
+					
+					// get only coordinates
+					data = helper.getCoordinates(data);
 					
 					// points
 					data.should.containEql([6,4]);
