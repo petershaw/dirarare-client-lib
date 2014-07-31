@@ -20,7 +20,7 @@ var line2	= new Polygon([0,2], [7,2]);
 var ConsolePrinter = require('../lib/printer/console')(matrix);
 var ArtNetPrinter = require('../lib/printer/artnet')(matrix);
 
-matrix.setTarget( ArtNetPrinter );
+matrix.setTarget( ConsolePrinter );
 matrix.addElement('l1', line1);
 matrix.addElement('l2', line2);
 
