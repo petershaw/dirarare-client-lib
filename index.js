@@ -11,6 +11,7 @@ module.exports = {
 	, ArtNetPrinter:	require('./lib/printer/artnet')
 	
 	// Objects
+	, Point:			require('./lib/objects/point')
 	, Line:				require('./lib/objects/line')
 	, Polygon:			require('./lib/objects/polygon')	
 }
