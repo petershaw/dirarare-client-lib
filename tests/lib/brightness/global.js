@@ -26,7 +26,7 @@ Empty Matrix:
 */
 describe('Brightness at a polygon', function(){
 	describe('should be set', function(){
-		var s =  new polygon([2,2],[5,2],[5,5],[2,5]);
+		
 		/*
 		Test 1 - move right
 		9   _  _  _  _  _  _  _  _  _  _
@@ -41,18 +41,56 @@ describe('Brightness at a polygon', function(){
 		0   _  _  _  _  _  _  _  _  _  _
 			0  1  2  3  4  5  6  7  8  9
 		*/
-		it('to 255 initially', function(done){
-			s.enableLines();
-			s.enableFill();
+		it('to 255 initially - no lines, no fills', function(done){
+			var s =  new polygon([2,2],[5,2],[5,5],[2,5]);
+			//s.enableLines();
+			//s.enableFill();
 			s.render(function(data){
 				
+				// Check length of 4
+				data.should.have.length(4);
+					
+				// check each point has a brightness of 255
+				_.each(data, function(e){
+					(e.length).should.be.above(2);
+					(e[2]).should.be.equal(255);
+				});
+
+				done();
+			});
+		});
+
+		it('to 255 initially - no fills', function(done){
+			var s =  new polygon([2,2],[5,2],[5,5],[2,5]);
+			s.enableLines();
+			//s.enableFill();
+			s.render(function(data){
+				
+				// Check length of 12
+				data.should.have.length(12);
+					
+				// check each point has a brightness of 255
+				_.each(data, function(e){
+					(e.length).should.be.above(2);
+					(e[2]).should.be.equal(255);
+				});
+
+				done();
+			});
+		});
+
+		it('to 255 initially', function(done){
+			var s =  new polygon([2,2],[5,2],[5,5],[2,5]);
+			s.enableLines();
+			s.enableFill();
+			s.render(function(data){			
 				// Check length of 16
 				data.should.have.length(16);
 					
 				// check each point has a brightness of 255
 				_.each(data, function(e){
 					(e.length).should.be.above(2);
-					e[2].should.equal(255);
+					(e[2]).should.be.equal(255);
 				});
 
 				done();
@@ -60,24 +98,24 @@ describe('Brightness at a polygon', function(){
 		});
 		
 		it('to 83', function(done){
+			var s =  new polygon([2,2],[5,2],[5,5],[2,5]);
 			s.enableLines();
 			s.enableFill();
 			s.setGlobalBrightness(83);
-			s.render(function(data){
-				
-				// Check length of 16
-				data.should.have.length(16);
-				(s.brightness).should.be.equal(83);
-				
-				// check each point has a brightness of 255
-				_.each(data, function(e){
-					(e.length).should.be.above(2);
-					console.log(e);
-					e[2].should.equal(83);
-				});
+ 			s.render(function(data){
 
-				done();
-			});
+ 				// Check length of 16
+ 				data.should.have.length(16);
+ 				(s.brightness).should.be.equal(83);
+ 				
+ 				// check each point has a brightness of 255
+ 				_.each(data, function(e){
+					(e.length).should.be.above(2);
+					e[2].should.be.equal(83);
+ 				});
+ 
+ 				done();
+ 			});
 		});
 
 	})		

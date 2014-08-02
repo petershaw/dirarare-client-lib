@@ -5,6 +5,7 @@ var   assert 	= require('assert')
 	, matrix 	= require('../../../../lib/matrix')
 	, movement 	= require('../../../../lib/movement')
 	, polygon 	= require('../../../../lib/objects/polygon')
+	, helper 	= require('../../../../lib/helper/point')
 	;
 
 	
@@ -47,6 +48,9 @@ describe('A polygon midpoint', function(){
 				sa.render(function(data){
 					// Check length of 4
 					data.should.have.length(4);
+					
+					// get only coordinates
+					data = helper.getCoordinates(data);
 					
 					// points
 					data.should.containEql([4,2]);
