@@ -6,7 +6,7 @@
     "url": "https://github.com/petershaw/dirarare-client-lib"
   },
   "description": "Construct 2D elements to a Matrix",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "node_modules/mocha/bin/mocha --recursive tests  -R spec"
   },
