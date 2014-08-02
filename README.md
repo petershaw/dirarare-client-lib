@@ -1,8 +1,8 @@
 Dirarare Client Lib
 ===============
-a node.js module for animated 2D-Pixel Art
+a node.js module for low-level animated 2D-Pixel Art
 
-This library draws, fills, move and resize 2D-Pixel art to a grid like a LED-Matrix. 
+This library draw, fill, move and resize 2D-Pixel art to a grid like a LED-Matrix. 
 
 Tests
 -------
@@ -27,16 +27,46 @@ or
 node consoleDebug.js line 1,0 5,0
 ```
 
+Printer
+----------------------
+To build and debug your animation code, use the ConsolePrinter. See examples in /examples directory
+
+```JavaScript
+var Matrix = require('./lib/matrix')
+var ConsolePrinter = require('./lib/printer/console')(matrix);
+matrix.setTarget( ConsolePrinter );
+```
+
+To run your animation on the dirarare pixel matrix, just replace the printer with the ArtNetPrinter module.
+
+```JavaScript
+var Matrix = require('./lib/matrix')
+var ConsolePrinter = require('./lib/printer/console')(matrix);
+var ArtNetPrinter = require('./lib/printer/artnet')(matrix);
+matrix.setTarget( ConsolePrinter, ArtNetPrinter );
+```
+
+It is possible to add two ore more printer targets to the matrix:
+
+```JavaScript
+var Matrix = require('./lib/matrix')
+var ArtNetPrinter = require('./lib/printer/artnet')(matrix);
+matrix.setTarget( ArtNetPrinter );
+```
+
+
 Supported 
 ----------------------
 - Polygons
 - Lines
 - Movement
+- Resizing
+- Dimming
 
 Still unsupported 
 ----------------------
-- Resizing
-- Dimming (Light effekts)
+
+- Multi Server Support (Multiplxing)
 
 Contribution
 -----------------
