@@ -14,7 +14,7 @@ npm test
 
 ConsoleDebugger
 -----------------------
-![ConsoleDebug](./docs/images/consoleDebug.png) 
+![ConsoleDebug](https://raw.githubusercontent.com/petershaw/dirarare-client-lib/master/docs/images/consoleDebug.png) 
 
 eg: 
 
@@ -26,6 +26,12 @@ or
 ```bash
 node consoleDebug.js line 1,0 5,0
 ```
+
+Elements
+----------------------
+* Point
+* Line
+* Polygon
 
 Printer
 ----------------------
