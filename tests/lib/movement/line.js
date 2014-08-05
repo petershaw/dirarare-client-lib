@@ -96,7 +96,80 @@ describe('A line', function(){
 				});
 			})
 		});
-		
 	});
+
+	describe('on a matrix should be replaced after moveTo', function(){
+		var s =  new line([2,2],[6,6]);
+		/*
+		Test 1 - move right
+		9   _  _  _  _  _  _  _  _  _  _
+		8   _  _  _  _  _  _  _  _  _  _
+		7   _  _  _  _  _  _  _  _  _  _
+		6   _  _  _  _  _  _  X  #  _  _
+		5   _  _  _  _  _  O  O  _  _  _
+		4   _  _  _  _  +  +  _  _  _  _
+		3   _  _  _  O  O  _  _  _  _  _
+		2   _  _  X  #  _  _  _  _  _  _
+		1   _  _  _  _  _  _  _  _  _  _
+		0   _  _  _  _  _  _  _  _  _  _
+			0  1  2  3  4  5  6  7  8  9
+		*/
+		it('right', function(done){
+			movement.moveTo(s, [5, 4], function(){
+				s.render(function(data){
+					// Check length of 4
+					data.should.have.length(5);
+					
+					// get only coordinates
+					data = helper.getCoordinates(data);
+					
+					// points
+					data.should.containEql([3,2]);
+					data.should.containEql([4,3]);
+					data.should.containEql([5,4]);
+					data.should.containEql([6,5]);
+					data.should.containEql([7,6]);
+					
+					done();
+				});
+			})
+		});
+
+		/*
+		Test 2 - move up
+		9   _  _  _  _  _  _  _  #  _  _
+		8   _  _  _  _  _  _  O  _  _  _
+		7   _  _  _  _  _  +  _  _  _  _
+		6   _  _  _  _  O  _    X  _  _
+		5   _  _  _  #  _  _  O  _  _  _
+		4   _  _  _  _  _  +  _  _  _  _
+		3   _  _  _  _  O  _  _  _  _  _
+		2   _  _  _  X  _  _  _  _  _  _
+		1   _  _  _  _  _  _  _  _  _  _
+		0   _  _  _  _  _  _  _  _  _  _
+			0  1  2  3  4  5  6  7  8  9
+		*/
+		it('3 up', function(done){
+			movement.moveTo(s, [5, 7], function(){
+				s.render(function(data){
+					// Check length of 4
+					data.should.have.length(5);
+					
+					// get only coordinates
+					data = helper.getCoordinates(data);
+					
+					// points
+					data.should.containEql([3,5]);
+					data.should.containEql([4,6]);
+					data.should.containEql([5,7]);
+					data.should.containEql([6,8]);
+					data.should.containEql([7,9]);
+					
+					done();
+				});
+			})
+		});		
+	});
+	
 		
 });

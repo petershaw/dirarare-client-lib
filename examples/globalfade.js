@@ -48,4 +48,3 @@ polygon1.enableLines();
 polygon1.enableFill();
 
 animation.start();
-

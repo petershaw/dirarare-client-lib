@@ -49,6 +49,9 @@ describe('A Point', function(){
 				// count elements
 				data.should.have.length(1);
 				
+				// get only coordinates
+				data = helper.getCoordinates(data);
+				
 				// points
 				data.should.containEql([2,2]);
 

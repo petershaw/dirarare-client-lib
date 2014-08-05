@@ -92,5 +92,132 @@ describe('A Point', function(){
 		});
 		
 	});
+
+	describe('on a matrix should be replaced after moveTo', function(){
+		var s =  new point([2,2]);
+		/*
+		Test 1 - move right
+		9   _  _  _  _  _  _  _  _  _  _
+		8   _  _  _  _  _  _  _  _  _  _
+		7   _  _  _  _  _  _  _  _  _  _
+		6   _  _  _  _  _  _  _  _  _  _
+		5   _  _  _  _  _  _  _  _  _  _
+		4   _  _  _  _  _  _  _  _  _  _
+		3   _  _  _  _  _  _  _  _  _  _
+		2   _  _  X  _  O  _  _  _  _  _
+		1   _  _  _  _  _  _  _  _  _  _
+		0   _  _  _  _  _  _  _  _  _  _
+			0  1  2  3  4  5  6  7  8  9
+		*/
+		it('right', function(done){
+			movement.moveTo(s, [4, 2], function(s){
+				s.render(function(data){
+					// Check length of 1
+					data.should.have.length(1);
+					
+					// get only coordinates
+					data = helper.getCoordinates(data);
+					
+					// points
+					data.should.containEql([4,2]);
+					
+					done();
+				});
+			})
+		});
+		/*
+		Test 1 - move left
+		9   _  _  _  _  _  _  _  _  _  _
+		8   _  _  _  _  _  _  _  _  _  _
+		7   _  _  _  _  _  _  _  _  _  _
+		6   _  _  _  _  _  _  _  _  _  _
+		5   _  _  _  _  _  _  _  _  _  _
+		4   _  _  _  _  _  _  _  _  _  _
+		3   _  _  _  _  _  _  _  _  _  _
+		2   _  O  _  _  X  _  _  _  _  _
+		1   _  _  _  _  _  _  _  _  _  _
+		0   _  _  _  _  _  _  _  _  _  _
+			0  1  2  3  4  5  6  7  8  9
+		*/		
+		it('left', function(done){
+			movement.moveTo(s, [1, 2], function(s){
+				s.render(function(data){
+					// Check length of 1
+					data.should.have.length(1);
+					
+					// get only coordinates
+					data = helper.getCoordinates(data);
+					
+					// points
+					data.should.containEql([1,2]);
+					
+					done();
+				});
+			})
+		});
+		
+		/*
+		Test 2 - move up
+		9   _  _  _  _  _  _  _  _  _  _
+		8   _  _  _  _  _  _  _  _  _  _
+		7   _  O  _  _  _  _  _  _  _  _
+		6   _  _  _  _  _  _  _  _  _  _
+		5   _  _  _  _  _  _  _  _  _  _
+		4   _  _  _  _  _  _  _  _  _  _
+		3   _  _  _  _  _  _  _  _  _  _
+		2   _  X  _  _  _  _  _  _  _  _
+		1   _  _  _  _  _  _  _  _  _  _
+		0   _  _  _  _  _  _  _  _  _  _
+			0  1  2  3  4  5  6  7  8  9
+		*/
+		it('up', function(done){
+			movement.moveTo(s, [1, 7], function(s){
+				s.render(function(data){
+					// Check length of 1
+					data.should.have.length(1);
+					
+					// get only coordinates
+					data = helper.getCoordinates(data);
+					
+					// points
+					data.should.containEql([1,7]);
+					
+					done();
+				});
+			})
+		});
+
+		/*
+		Test 2 - move down
+		9   _  _  _  _  _  _  _  _  _  _
+		8   _  _  _  _  _  _  _  _  _  _
+		7   _  X  _  _  _  _  _  _  _  _
+		6   _  _  _  _  _  _  _  _  _  _
+		5   _  _  _  _  _  _  _  _  _  _
+		4   _  _  _  _  _  _  _  _  _  _
+		3   _  _  _  _  _  _  _  _  _  _
+		2   _  _  _  _  _  _  _  _  _  _
+		1   _  _  _  _  _  _  _  _  _  _
+		0   _  O  _  _  _  _  _  _  _  _
+			0  1  2  3  4  5  6  7  8  9
+		*/
+		it('down', function(done){
+			movement.moveTo(s, [1, 0], function(s){
+				s.render(function(data){
+					// Check length of 1
+					data.should.have.length(1);
+					
+					// get only coordinates
+					data = helper.getCoordinates(data);
+					
+					// points
+					data.should.containEql([1,0]);
+					
+					done();
+				});
+			})
+		});		
+	});
+
 		
 });

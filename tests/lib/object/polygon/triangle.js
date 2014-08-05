@@ -131,18 +131,18 @@ describe('Simple Triangle-Polygon', function(){
 			6   _  _  _  _  _  _  _  _  _  _
 			5   _  _  _  _  _  _  _  _  _  _
 			4   _  _  X  _  _  _  _  _  _  _
-			3   _  _  F  _  _  _  _  _  _  _
+			3   _  O  F  O  _  _  _  _  _  _
 			2   _  O  F  O  _  _  _  _  _  _
-			1   _  F  F  F  _  _  _  _  _  _
+			1   O  F  F  F  O  _  _  _  _  _
 			0   X  O  O  O  X  _  _  _  _  _
 				0  1  2  3  4  5  6  7  8  9
 			*/		
 			s.enableLines();
 			s.enableFill();
-			it('should return thirteen points', function(done){
+			it('should return seventeen points', function(done){
 				s.render(function(data){
 					data.should.be.an.Array;
-					data.should.have.length(15);
+					data.should.have.length(17);
 					done();
 				});
 			});

@@ -237,5 +237,42 @@ describe('A polygon', function(){
 			})
 		});
 	});	
-		
+
+	describe('without lines and without fills on a matrix should be replaced after moveTo', function(){
+		var s =  new polygon([2,2],[6,2],[6,6],[2,6]);
+		/*
+		Test 1 - move right
+		9   _  _  _  _  _  _  _  _  _  _
+		8   _  _  _  _  _  _  _  _  _  _
+		7   _  _  _  _  _  #  _  _  _  #
+		6   _  _  X  _  _  _  X  _  _  _
+		5   _  _  _  _  _  _  _  +  _  _
+		4   _  _  _  _  +  _  _  _  _  _
+		3   _  _  _  _  _  #  _  _  _  #
+		2   _  _  X  _  _  _  X  _  _  _
+		1   _  _  _  _  _  _  _  _  _  _
+		0   _  _  _  _  _  _  _  _  _  _
+			0  1  2  3  4  5  6  7  8  9
+		*/
+		it('right to 7,5', function(done){
+			movement.moveTo(s, [7, 5], function(){
+				s.render(function(data){
+					// Check length of 4
+					data.should.have.length(4);
+					
+					// get only coordinates
+					data = helper.getCoordinates(data);
+					
+					// points
+					data.should.containEql([5,3]);
+					data.should.containEql([9,3]);
+					data.should.containEql([5,7]);
+					data.should.containEql([9,7]);
+					
+					done();
+				});
+			})
+		});
+	});
+
 });

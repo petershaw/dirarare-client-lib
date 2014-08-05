@@ -44,6 +44,9 @@ describe('A Line', function(){
 				// count elements
 				data.should.have.length(7);
 				
+				// get only coordinates
+				data = helper.getCoordinates(data);
+				
 				// points
 				data.should.containEql([2,2]);
 				data.should.containEql([8,2]);
@@ -82,6 +85,9 @@ describe('A Line', function(){
 				// count elements
 				data.should.have.length(7);
 				
+				// get only coordinates
+				data = helper.getCoordinates(data);
+				
 				// points
 				data.should.containEql([5,2]);
 				data.should.containEql([5,7]);
@@ -119,6 +125,9 @@ describe('A Line', function(){
 				
 				// count elements
 				data.should.have.length(7);
+				
+				// get only coordinates
+				data = helper.getCoordinates(data);
 				
 				// points
 				data.should.containEql([1,1]);
@@ -159,6 +168,9 @@ describe('A Line', function(){
 				
 				// count elements
 				data.should.have.length(7);
+				
+				// get only coordinates
+				data = helper.getCoordinates(data);
 				
 				// points
 				data.should.containEql([1,7]);
