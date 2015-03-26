@@ -8,56 +8,42 @@ var clc = require('cli-color')
 	, Movement = require('../lib/movement')
 	, Animation = require('../lib/animation')
 	, Polygon = require('../lib/objects/polygon')
+	, Line = require('../lib/objects/line')
 	;
 	
 	
 var matrix 		= new Matrix(8, 8);	
 var movement 	= new Movement(matrix);
-var polygon1	= new Polygon([4,0], [6,0], [6,2], [4,2]);
+var polygon1	= new Polygon([0, 0, 255], [7, 0, 255], [7, 7, 255], [0, 7, 255]);
+
 
 var ConsolePrinter = require('../lib/printer/console')(matrix);
 var ArtNetPrinter = require('../lib/printer/artnet')(matrix);
 
-matrix.setTarget( ConsolePrinter /* ArtNetPrinter */ );
+//matrix.setTarget( ConsolePrinter );
+matrix.setTarget( ArtNetPrinter );
+
 matrix.addElement('p1', polygon1);
-// matrix.addElement('p2', polygon2);
 
 var animation 	= new Animation(matrix);
-animation.updateFrequency(30);
+animation.updateFrequency(50);
 animation.updateFunction(function(){
 	matrix.draw(function(data){
 		//console.log("== ", data);
 	});
 });
 
-var moveright = [4,0];
-var movedown = [0,1];
 
-var a1 = animation.add(80, 'p1'
+var brightness = 255
+var r1 = animation.add(300, 'p1'
 	, function(element, matrix){
- 		movement.moveBy( element, moveright );
-
- 		if((element.midPoint[0] >= matrix.dimension.x)){
- 			moveright[0] = -1;
- 		}
- 		if((element.midPoint[0] <= 0)){
- 			moveright[0] = 1;
- 		}
- 	}
-	, function(element, matrix){
- 		movement.moveBy( element, movedown );
- 		
- 		if(element.midPoint[1] >= matrix.dimension.y){
- 			movedown[1] = -1;
- 		}
- 		if(element.midPoint[1] <= 0){
- 			movedown[1] = 1;
- 		}
- 	}
+		if(brightness == 255){ brightness = 0; } else { brightness = 255; }
+		element.setGlobalBrightness(brightness);
+	}
 );
 
+
 polygon1.enableLines();
-//polygon1.enableFill();
+polygon1.enableFill();
 
 animation.start();
-
