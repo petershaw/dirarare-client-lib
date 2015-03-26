@@ -38,8 +38,9 @@ Printer
 To build and debug your animation code, use the ConsolePrinter. See examples in /examples directory
 
 ```JavaScript
-var Matrix = require('./lib/matrix')
-var ConsolePrinter = require('./lib/printer/console')(matrix);
+var dirarare = require('dirarare-client-lib');
+var matrix = new dirarare.Matrix(8, 8);
+var ConsolePrinter = new dirarare.ConsolePrinter(matrix);
 matrix.setTarget( ConsolePrinter );
 ```
 
@@ -47,18 +48,23 @@ To run your animation on the dirarare pixel matrix, just replace the printer wit
 
 ```JavaScript
 var Matrix = require('./lib/matrix')
-var ConsolePrinter = require('./lib/printer/console')(matrix);
 var ArtNetPrinter = require('./lib/printer/artnet')(matrix);
-matrix.setTarget( ConsolePrinter, ArtNetPrinter );
+matrix.setTarget( ArtNetPrinter );
 ```
 
 It is possible to add two ore more printer targets to the matrix:
 
 ```JavaScript
-var Matrix = require('./lib/matrix')
-var ArtNetPrinter = require('./lib/printer/artnet')(matrix);
-matrix.setTarget( ArtNetPrinter );
+var dirarare = require('dirarare-client-lib');
+var matrix = new dirarare.Matrix(8, 8);
+var ConsolePrinter = new dirarare.ConsolePrinter(matrix);
+var ArtNetPrinter = new dirarare.ArtNetPrinter(matrix);
+matrix.setTarget( ConsolePrinter, ArtNetPrinter );
 ```
+
+## Examples
+A working Pong in 155 lines of code is here: 
+[Dirarare Pong](https://github.com/petershaw/dirarare-example-pong)
 
 
 Supported 
